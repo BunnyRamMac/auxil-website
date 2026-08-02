@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const enterpriseSections = [
@@ -60,7 +61,13 @@ export default function EnterpriseServicesPage() {
     <main className="enterprise-page">
       <section className="enterprise-page-shell">
         <Link className="brand enterprise-page-brand" href="/">
-          <span>Auxil</span>
+          <Image
+            src="/logo/auxil-logo.png"
+            alt="Auxil IT Solutions"
+            width={1536}
+            height={1024}
+            priority
+          />
         </Link>
 
         <header className="enterprise-page-hero">

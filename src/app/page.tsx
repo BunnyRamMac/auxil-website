@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const CONTACT_EMAIL = "hello@auxilitsolutions.com";
 
 const navLinks = [
@@ -107,7 +109,13 @@ export default function Home() {
       <header className="site-header">
         <nav className="nav-shell" aria-label="Main navigation">
           <a className="brand" href="#top" aria-label="Auxil home">
-            <span>Auxil</span>
+            <Image
+              src="/logo/auxil-logo.png"
+              alt="Auxil IT Solutions"
+              width={1536}
+              height={1024}
+              priority
+            />
           </a>
           <div className="nav-links">
             {navLinks.map((link) => (
@@ -340,7 +348,12 @@ export default function Home() {
         <div className="section-inner footer-grid">
           <div>
             <a className="footer-brand" href="#top">
-              Auxil IT Solutions
+              <Image
+                src="/logo/auxil-logo.png"
+                alt="Auxil IT Solutions"
+                width={1536}
+                height={1024}
+              />
             </a>
             <p>Building intelligent products for real life.</p>
             <p>Founded in March 2022</p>

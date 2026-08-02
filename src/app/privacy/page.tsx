@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 const CONTACT_EMAIL = "hello@auxilitsolutions.com";
@@ -17,7 +18,13 @@ export default function PrivacyPage() {
     <main className="legal-page">
       <section className="legal-shell">
         <Link className="brand legal-brand" href="/">
-          <span>Auxil</span>
+          <Image
+            src="/logo/auxil-logo.png"
+            alt="Auxil IT Solutions"
+            width={1536}
+            height={1024}
+            priority
+          />
         </Link>
         <p className="eyebrow">Privacy</p>
         <h1>Privacy Policy</h1>
