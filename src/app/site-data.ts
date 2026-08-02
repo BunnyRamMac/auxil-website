@@ -14,19 +14,16 @@ export const footerGroups = [
     title: "Products",
     links: [
       { label: "Products", href: "/products" },
-      { label: "PoojaPath", href: "/products#poojapath" },
-      { label: "2DO AI", href: "/products#2do-ai" },
-      { label: "CareerSignal Global", href: "/products#careersignal-global" },
-      { label: "AI Resume Builder", href: "/products#ai-resume-builder" },
+      { label: "Technology", href: "/#technology" },
+      { label: "Enterprise Services", href: "/enterprise-services" },
     ],
   },
   {
     title: "Solutions",
     links: [
       { label: "Consulting", href: "/consulting" },
-      { label: "Enterprise Services", href: "/enterprise-services" },
-      { label: "Case Studies", href: "/case-studies" },
       { label: "Partners", href: "/partners" },
+      { label: "Case Studies", href: "/case-studies" },
     ],
   },
   {
@@ -43,8 +40,7 @@ export const footerGroups = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Resources", href: "/resources" },
-      { label: "AI Reports", href: "/resources#ai-reports" },
-      { label: "Recruitment Reports", href: "/resources#recruitment-reports" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
   {
@@ -53,10 +49,7 @@ export const footerGroups = [
   },
 ];
 
-export const socialLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/auxil-it-solutions" },
-  { label: "X", href: "https://x.com/auxilitsolutions" },
-];
+export const socialLinks: { label: string; href: string }[] = [];
 
 export const products = [
   {

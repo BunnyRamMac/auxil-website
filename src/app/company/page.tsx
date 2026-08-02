@@ -4,11 +4,11 @@ import { SiteHeader } from "../components/site-header";
 import { pageMetadata, siteUrl } from "../site-data";
 
 const timeline = [
-  ["March 2022", "Auxil begins with consulting and talent solutions."],
-  ["2023", "Recruitment delivery experience reveals repeatable workflow challenges."],
-  ["2024", "Product research expands across productivity, careers, and digital operations."],
+  ["March 2022", "Auxil begins by supporting businesses through consulting and talent solutions."],
+  ["2023", "Delivery work reveals recurring problems in productivity, hiring, and digital workflows."],
+  ["2024", "Product research expands across productivity, career intelligence, and spiritual technology."],
   ["2025", "Auxil sharpens its direction as an AI-first product company."],
-  ["Now", "The company is building intelligent software while supporting selected enterprise needs."],
+  ["Now", "Auxil builds intelligent software while supporting selected enterprise technology needs."],
 ];
 
 const values = [
@@ -45,10 +45,10 @@ export default function CompanyPage() {
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">About Auxil</p>
-          <h1>An AI-first company shaped by real delivery experience.</h1>
+          <h1>An AI-first product company shaped by real delivery experience.</h1>
           <p>
-            Auxil IT Solutions began by helping businesses solve operating and
-            talent challenges. That foundation now informs a product company
+            Auxil began in March 2022 by helping businesses solve consulting
+            and talent challenges. That experience now informs a company
             building practical intelligence for work, careers, and daily life.
           </p>
         </div>
@@ -58,7 +58,7 @@ export default function CompanyPage() {
         <div className="section-inner editorial-grid">
           <article>
             <p className="eyebrow">Mission</p>
-            <h2>Build intelligent products that make complex human workflows simpler.</h2>
+            <h2>Build intelligent products that make recurring human workflows simpler.</h2>
             <p>
               Auxil focuses on software that helps people make better decisions,
               reduce friction, and move through meaningful routines with more
@@ -67,7 +67,7 @@ export default function CompanyPage() {
           </article>
           <article>
             <p className="eyebrow">Vision</p>
-            <h2>Become a global AI product company trusted for useful intelligence.</h2>
+            <h2>Become a global AI product company trusted for clarity, usefulness, and care.</h2>
             <p>
               Our ambition is to create product systems that feel dependable,
               humane, and quietly powerful across productivity, career
@@ -101,9 +101,9 @@ export default function CompanyPage() {
           </article>
           <article>
             <p>
-              Auxil values leaders who can combine ambition with restraint:
-              people who understand users, respect operations, make careful
-              technical decisions, and build teams around accountability.
+              Auxil values people who combine ambition with restraint: builders
+              who understand users, respect operations, make careful technical
+              decisions, and take responsibility for the systems they shape.
             </p>
           </article>
         </div>

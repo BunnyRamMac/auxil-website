@@ -7,44 +7,27 @@ const resourceGroups = [
   {
     id: "whitepapers",
     title: "Whitepapers",
-    resources: [
-      "Practical AI product strategy for early-stage teams",
-      "Designing dependable user experiences for intelligent software",
-    ],
+    description: "Long-form research and product strategy documents will be added as they are prepared for publication.",
   },
   {
     id: "guides",
     title: "Guides",
-    resources: [
-      "AI workflow discovery checklist",
-      "Recruitment delivery readiness guide",
-      "Product engineering engagement planner",
-    ],
+    description: "Practical guides will focus on AI workflow discovery, product planning, and recruitment operations.",
   },
   {
     id: "downloads",
     title: "Downloads",
-    resources: [
-      "Product discovery worksheet",
-      "Hiring workflow audit template",
-      "Enterprise software planning checklist",
-    ],
+    description: "Downloadable worksheets and planning assets will be published only when they are ready to use.",
   },
   {
     id: "recruitment-reports",
     title: "Recruitment Reports",
-    resources: [
-      "Technology hiring operations report",
-      "Recruitment process improvement brief",
-    ],
+    description: "Recruitment reports will cover staffing operations, process quality, and delivery patterns.",
   },
   {
     id: "ai-reports",
     title: "AI Reports",
-    resources: [
-      "AI adoption opportunities in business workflows",
-      "Useful intelligence patterns for SaaS products",
-    ],
+    description: "AI reports will examine practical adoption opportunities and product patterns.",
   },
 ];
 
@@ -88,11 +71,7 @@ export default function ResourcesPage() {
               <article className="content-card" id={group.id} key={group.title}>
                 <p className="card-kicker">Resource Type</p>
                 <h2>{group.title}</h2>
-                <ul className="dash-list">
-                  {group.resources.map((resource) => (
-                    <li key={resource}>{resource}</li>
-                  ))}
-                </ul>
+                <p>{group.description}</p>
                 <a className="text-link" href="/contact">
                   Request access
                 </a>

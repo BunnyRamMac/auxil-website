@@ -1,38 +1,13 @@
 import type { Metadata } from "next";
-import { BlogList, type BlogArticle } from "../components/blog-list";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
 import { pageMetadata, siteUrl } from "../site-data";
 
-const articles: BlogArticle[] = [
-  {
-    title: "Designing AI products around human operating rhythms",
-    category: "AI Products",
-    readingTime: "5 min read",
-    summary:
-      "How practical AI products can reduce friction when they begin with the way people already plan, decide, and recover attention.",
-  },
-  {
-    title: "What recruitment operations can teach product teams",
-    category: "Recruitment",
-    readingTime: "4 min read",
-    summary:
-      "Hiring workflows reveal lessons about trust, signal quality, coordination, and decision timing that apply directly to software design.",
-  },
-  {
-    title: "From workflow automation to useful intelligence",
-    category: "Technology",
-    readingTime: "6 min read",
-    summary:
-      "A product view on when automation is enough, when AI adds value, and where dependable user experience matters most.",
-  },
-  {
-    title: "Building career tools that respect candidate context",
-    category: "Career Intelligence",
-    readingTime: "5 min read",
-    summary:
-      "Career technology should help people understand opportunities, improve applications, and move with more clarity.",
-  },
+const editorialTracks = [
+  "AI Products",
+  "Recruitment",
+  "Technology",
+  "Career Intelligence",
 ];
 
 export const metadata: Metadata = pageMetadata(
@@ -43,14 +18,10 @@ export const metadata: Metadata = pageMetadata(
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Blog",
+  "@type": "CollectionPage",
   name: "Auxil Blog",
   url: `${siteUrl}/blog`,
-  blogPost: articles.map((article) => ({
-    "@type": "BlogPosting",
-    headline: article.title,
-    description: article.summary,
-  })),
+  description: metadata.description,
 };
 
 export default function BlogPage() {
@@ -74,7 +45,26 @@ export default function BlogPage() {
 
       <section className="section">
         <div className="section-inner">
-          <BlogList articles={articles} />
+          <div className="content-grid two">
+            <article className="content-card feature-card">
+              <p className="card-kicker">Editorial Direction</p>
+              <h2>Publishing will begin when there is something useful to say.</h2>
+              <p>
+                Auxil is preparing concise, practical writing on AI product
+                decisions, recruitment operations, software delivery, and career
+                intelligence. The library is intentionally empty until each piece
+                is ready for publication.
+              </p>
+            </article>
+            <article className="content-card">
+              <p className="card-kicker">Planned Categories</p>
+              <ul className="dash-list">
+                {editorialTracks.map((track) => (
+                  <li key={track}>{track}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
           <div className="page-cta">
             <h2>Want a deeper discussion on AI product strategy?</h2>
             <a className="button button-primary" href="/contact">

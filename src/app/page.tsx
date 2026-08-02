@@ -12,23 +12,23 @@ const products = [
     status: "Private Testing",
     icon: "ritual",
     description:
-      "A multilingual digital spiritual companion for daily pooja, Panchang guidance, Japa, festivals, and traditional practices.",
+      "A digital spiritual companion for daily pooja, Panchang guidance, Japa, festivals, and traditional practice.",
   },
   {
-    name: "AI Productivity Platform",
+    name: "2DO AI",
     category: "Personal Intelligence",
     status: "In Development",
     icon: "flow",
     description:
-      "An intelligent platform designed to help people manage tasks, schedules, priorities, energy, and follow-ups.",
+      "A personal productivity system for tasks, priorities, schedules, energy, and follow-ups.",
   },
   {
-    name: "AI Career Intelligence Platform",
+    name: "CareerSignal Global",
     category: "Career Technology",
     status: "In Development",
     icon: "signal",
     description:
-      "A career platform designed to help professionals discover opportunities, assess eligibility, improve applications, and manage their search.",
+      "A career intelligence product for opportunity discovery, eligibility signals, applications, and job-search flow.",
   },
 ];
 
@@ -123,8 +123,8 @@ export default function Home() {
             <p className="eyebrow">AI-first technology company</p>
             <h1>Building intelligent products for real life.</h1>
             <p className="hero-text">
-              AI products for focus, opportunity, and daily meaning, built with
-              the calm discipline real life deserves.
+              Auxil turns recurring problems in work, careers, and daily
+              practice into focused AI products people can trust.
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#products">
@@ -178,11 +178,11 @@ export default function Home() {
           <div className="section-heading split-heading">
             <div>
               <p className="eyebrow">Building at Auxil</p>
-              <h2>Three products. Three meaningful problems.</h2>
+              <h2>Products shaped around real human routines.</h2>
             </div>
             <p>
-              Each product is being developed carefully, with launch plans and
-              capabilities evolving through private learning and user feedback.
+              Each product starts with a repeated problem, then earns its place
+              through research, private learning, and careful execution.
             </p>
           </div>
           <div className="product-grid">

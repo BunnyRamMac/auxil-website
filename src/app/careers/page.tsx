@@ -25,14 +25,6 @@ const hiringSteps = [
   "Offer and onboarding",
 ];
 
-const openPositions = [
-  "Product Designer",
-  "Frontend Engineer",
-  "AI Product Engineer",
-  "Technical Recruiter",
-  "Recruitment Delivery Lead",
-];
-
 export const metadata: Metadata = pageMetadata(
   "/careers",
   "Careers | Auxil IT Solutions",
@@ -110,11 +102,12 @@ export default function CareersPage() {
             </article>
             <article className="content-card">
               <p className="eyebrow">Open Positions</p>
-              <ul className="dash-list">
-                {openPositions.map((position) => (
-                  <li key={position}>{position}</li>
-                ))}
-              </ul>
+              <h2>No open roles are listed right now.</h2>
+              <p>
+                Auxil will publish specific roles when hiring opens. You can
+                still introduce yourself if your work is aligned with product,
+                engineering, AI, recruitment, or operations.
+              </p>
             </article>
           </div>
 

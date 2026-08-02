@@ -21,6 +21,7 @@ export function SiteHeader() {
             alt="Auxil IT Solutions"
             width={1536}
             height={1024}
+            sizes="96px"
             priority
           />
         </Link>
@@ -54,19 +55,19 @@ export function SiteHeader() {
         </button>
       </nav>
 
-      <div
-        className="mobile-nav"
-        id="mobile-navigation"
-        data-open={isOpen}
-        aria-hidden={!isOpen}
-      >
-        <div className="section-inner mobile-nav-inner">
-          {primaryNav.map((link) => (
-            <Link key={link.href} href={link.href} onClick={closeDrawer}>
-              {link.label}
+      <div className="mobile-nav" id="mobile-navigation" data-open={isOpen}>
+        {isOpen && (
+          <div className="section-inner mobile-nav-inner">
+            {primaryNav.map((link) => (
+              <Link key={link.href} href={link.href} onClick={closeDrawer}>
+                {link.label}
+              </Link>
+            ))}
+            <Link className="mobile-nav-cta" href="/contact" onClick={closeDrawer}>
+              Let&apos;s Talk
             </Link>
-          ))}
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );

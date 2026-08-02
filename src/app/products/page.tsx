@@ -33,10 +33,10 @@ export default function ProductsPage() {
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Products</p>
-          <h1>Intelligent products for meaningful everyday systems.</h1>
+          <h1>Intelligent products for work, careers, and daily practice.</h1>
           <p>
-            Auxil is developing focused AI products across productivity, career
-            intelligence, resume creation, and spiritual technology.
+            Auxil is developing products where AI can reduce friction, improve
+            decisions, and support routines that already matter to people.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export default function ProductsPage() {
             {products.map((product) => (
               <article className="content-card product-showcase-card" id={product.id} key={product.name}>
                 <div className="card-topline">
-                  <p className="card-kicker">Product</p>
+                  <p className="card-kicker">Product Story</p>
                   <span className="status-pill">{product.status}</span>
                 </div>
                 <h2>{product.name}</h2>

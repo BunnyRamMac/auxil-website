@@ -36,13 +36,15 @@ export function SiteFooter() {
 
       <div className="section-inner footer-bottom">
         <p>© {new Date().getFullYear()} Auxil IT Solutions. All rights reserved.</p>
-        <div className="footer-socials" aria-label="Social links">
-          {socialLinks.map((link) => (
-            <a key={link.href} href={link.href} rel="noreferrer" target="_blank">
-              {link.label}
-            </a>
-          ))}
-        </div>
+        {socialLinks.length > 0 && (
+          <div className="footer-socials" aria-label="Social links">
+            {socialLinks.map((link) => (
+              <a key={link.href} href={link.href} rel="noreferrer" target="_blank">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </footer>
   );
