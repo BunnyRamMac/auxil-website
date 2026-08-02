@@ -2,7 +2,21 @@ import type { MetadataRoute } from "next";
 
 const siteUrl = "https://auxilitsolutions.com";
 
-const routes = ["", "/enterprise-services", "/privacy"];
+const routes = [
+  "",
+  "/products",
+  "/consulting",
+  "/company",
+  "/resources",
+  "/contact",
+  "/careers",
+  "/partners",
+  "/faq",
+  "/blog",
+  "/case-studies",
+  "/enterprise-services",
+  "/privacy",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

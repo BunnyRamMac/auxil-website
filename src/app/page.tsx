@@ -1,14 +1,8 @@
-import Image from "next/image";
 import { ContactForm } from "./components/contact-form";
+import { SiteFooter } from "./components/site-footer";
+import { SiteHeader } from "./components/site-header";
 
 const CONTACT_EMAIL = "hello@auxilitsolutions.com";
-
-const navLinks = [
-  { label: "Products", href: "#products" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
 
 const products = [
   {
@@ -107,29 +101,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <header className="site-header">
-        <nav className="nav-shell" aria-label="Main navigation">
-          <a className="brand" href="#top" aria-label="Auxil home">
-            <Image
-              src="/logo/auxil-logo.png"
-              alt="Auxil IT Solutions"
-              width={1536}
-              height={1024}
-              priority
-            />
-          </a>
-          <div className="nav-links">
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <a className="nav-cta" href="#contact">
-            Let&apos;s Talk
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="hero section" id="top">
         <div className="hero-canvas" aria-hidden="true">
@@ -163,20 +135,29 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-visual" aria-hidden="true">
-            <span className="glass-panel glass-panel-one" />
-            <span className="glass-panel glass-panel-two" />
-            <span className="glass-panel glass-panel-three" />
-            <div className="intelligence-map">
-              <span className="node node-one" />
-              <span className="node node-two" />
-              <span className="node node-three" />
-              <span className="node node-four" />
-              <span className="node node-five" />
-              <span className="path path-one" />
-              <span className="path path-two" />
-              <span className="path path-three" />
-              <span className="path path-four" />
-              <span className="core-mark" />
+            <div className="ecosystem-orbit">
+              <span className="ecosystem-ring ecosystem-ring-one" />
+              <span className="ecosystem-ring ecosystem-ring-two" />
+              <span className="ecosystem-line ecosystem-line-one" />
+              <span className="ecosystem-line ecosystem-line-two" />
+              <span className="ecosystem-line ecosystem-line-three" />
+              <span className="ecosystem-line ecosystem-line-four" />
+              <div className="ecosystem-core">
+                <span>Auxil</span>
+                <strong>AI Platform</strong>
+              </div>
+              <div className="ecosystem-node ecosystem-node-one">
+                <span>CareerSignal Global</span>
+              </div>
+              <div className="ecosystem-node ecosystem-node-two">
+                <span>PoojaPath</span>
+              </div>
+              <div className="ecosystem-node ecosystem-node-three">
+                <span>2DO AI</span>
+              </div>
+              <div className="ecosystem-node ecosystem-node-four">
+                <span>Enterprise Solutions</span>
+              </div>
             </div>
             <div className="hero-signal-card">
               <span>Product intelligence</span>
@@ -315,31 +296,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="footer">
-        <div className="section-inner footer-grid">
-          <div>
-            <a className="footer-brand" href="#top">
-              <Image
-                src="/logo/auxil-logo.png"
-                alt="Auxil IT Solutions"
-                width={1536}
-                height={1024}
-              />
-            </a>
-            <p>Building intelligent products for real life.</p>
-            <p>Founded in March 2022</p>
-            <p>Headquartered in Hyderabad, India</p>
-          </div>
-          <div className="footer-links" aria-label="Footer navigation">
-            {navLinks.map((link) => (
-              <a key={link.href} href={link.href}>
-                {link.label}
-              </a>
-            ))}
-            <a href="/privacy">Privacy</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }

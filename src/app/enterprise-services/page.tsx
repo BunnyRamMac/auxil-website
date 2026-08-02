@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
+import { SiteFooter } from "../components/site-footer";
+import { SiteHeader } from "../components/site-header";
 
 const enterpriseSections = [
   {
@@ -59,17 +59,8 @@ export const metadata: Metadata = {
 export default function EnterpriseServicesPage() {
   return (
     <main className="enterprise-page">
+      <SiteHeader />
       <section className="enterprise-page-shell">
-        <Link className="brand enterprise-page-brand" href="/">
-          <Image
-            src="/logo/auxil-logo.png"
-            alt="Auxil IT Solutions"
-            width={1536}
-            height={1024}
-            priority
-          />
-        </Link>
-
         <header className="enterprise-page-hero">
           <p className="eyebrow">Enterprise Services</p>
           <h1>Talent and workforce solutions built for dependable delivery.</h1>
@@ -95,6 +86,7 @@ export default function EnterpriseServicesPage() {
           ))}
         </div>
       </section>
+      <SiteFooter />
     </main>
   );
 }
