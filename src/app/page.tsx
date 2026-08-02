@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ContactForm } from "./components/contact-form";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
@@ -143,8 +144,13 @@ export default function Home() {
               <span className="ecosystem-line ecosystem-line-three" />
               <span className="ecosystem-line ecosystem-line-four" />
               <div className="ecosystem-core">
-                <span>Auxil</span>
-                <strong>AI Platform</strong>
+                <Image
+                  src="/logo/auxil-logo.png"
+                  alt=""
+                  width={1536}
+                  height={1024}
+                  sizes="180px"
+                />
               </div>
               <div className="ecosystem-node ecosystem-node-one">
                 <span>CareerSignal Global</span>
