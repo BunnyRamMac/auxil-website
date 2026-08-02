@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ContactForm } from "./components/contact-form";
 
 const CONTACT_EMAIL = "hello@auxilitsolutions.com";
 
@@ -310,37 +311,7 @@ export default function Home() {
             Connect with Auxil about our products, technology initiatives, US
             staffing, recruitment partnerships or workforce requirements.
           </p>
-          <div className="contact-selector">
-            <label htmlFor="enquiry-type">Enquiry type</label>
-            <select id="enquiry-type" name="enquiry-type" required defaultValue="">
-              <option value="" disabled>
-                Select enquiry type
-              </option>
-              <option value="product-partnership">Product partnership</option>
-              <option value="technology-development">
-                Technology development
-              </option>
-              <option value="us-staffing">US staffing</option>
-              <option value="recruitment-solutions">
-                Recruitment solutions
-              </option>
-              <option value="payroll-and-workforce">
-                Payroll and workforce
-              </option>
-              <option value="early-product-access">
-                Early product access
-              </option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          <div className="hero-actions contact-actions">
-            <a className="button button-primary" href={`mailto:${CONTACT_EMAIL}`}>
-              Start a Conversation
-            </a>
-            <a className="button button-secondary" href={`mailto:${CONTACT_EMAIL}`}>
-              Email Auxil
-            </a>
-          </div>
+          <ContactForm contactEmail={CONTACT_EMAIL} />
         </div>
       </section>
 
