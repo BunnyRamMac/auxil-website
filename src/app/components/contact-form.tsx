@@ -25,9 +25,10 @@ const enquiryTypes = [
   "Other",
 ];
 
-export function ContactForm({ contactEmail }: { contactEmail: string }) {
+export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
+  const [statusMessage, setStatusMessage] = useState("");
   const statusRef = useRef<HTMLParagraphElement>(null);
 
   const updateField =
@@ -44,6 +45,7 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitState("sending");
+    setStatusMessage("");
 
     try {
       const response = await fetch("/api/contact", {
@@ -55,14 +57,27 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
       });
 
       if (!response.ok) {
-        throw new Error("Contact request failed");
+        const result = (await response.json().catch(() => null)) as {
+          error?: unknown;
+        } | null;
+        const message =
+          typeof result?.error === "string"
+            ? result.error
+            : "Something went wrong. Please try again.";
+        throw new Error(message);
       }
 
       setForm(initialFormState);
       setSubmitState("success");
+      setStatusMessage("Thank you. We'll get back to you soon.");
       statusRef.current?.focus();
-    } catch {
+    } catch (error) {
       setSubmitState("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
       statusRef.current?.focus();
     }
   }
@@ -161,9 +176,6 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
         <button className="button button-primary" type="submit" disabled={isSending}>
           {isSending ? "Sending..." : "Start a Conversation"}
         </button>
-        <a className="button button-secondary" href={`mailto:${contactEmail}`}>
-          Email Auxil
-        </a>
       </div>
 
       <p
@@ -172,8 +184,7 @@ export function ContactForm({ contactEmail }: { contactEmail: string }) {
         aria-live="polite"
         tabIndex={-1}
       >
-        {submitState === "success" && "Thank you. We'll get back to you soon."}
-        {submitState === "error" && "Something went wrong. Please try again."}
+        {statusMessage}
       </p>
     </form>
   );

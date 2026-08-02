@@ -71,7 +71,7 @@ export default function PrivacyPage() {
             <h2>Contact</h2>
             <p>
               For privacy questions, email{" "}
-              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+              {CONTACT_EMAIL}.
             </p>
           </section>
         </div>

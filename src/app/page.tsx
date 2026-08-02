@@ -311,7 +311,7 @@ export default function Home() {
             Connect with Auxil about our products, technology initiatives, US
             staffing, recruitment partnerships or workforce requirements.
           </p>
-          <ContactForm contactEmail={CONTACT_EMAIL} />
+          <ContactForm />
         </div>
       </section>
 
