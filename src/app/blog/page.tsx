@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const editorialTracks = [
   "AI Products",
@@ -16,22 +16,10 @@ export const metadata: Metadata = pageMetadata(
   "Read Auxil perspectives on AI products, recruitment operations, product engineering, and career intelligence.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Auxil Blog",
-  url: `${siteUrl}/blog`,
-  description: metadata.description,
-};
-
 export default function BlogPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Blog</p>

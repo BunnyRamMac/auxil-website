@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const timeline = [
   ["March 2022", "Auxil begins by supporting businesses through consulting and talent solutions."],
@@ -26,22 +26,10 @@ export const metadata: Metadata = pageMetadata(
   "Learn about Auxil IT Solutions, an AI-first technology company evolving from services experience into intelligent software products.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  name: "About Auxil IT Solutions",
-  url: `${siteUrl}/company`,
-  description: metadata.description,
-};
-
 export default function CompanyPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">About Auxil</p>

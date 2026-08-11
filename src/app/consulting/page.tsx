@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { consultingServices, pageMetadata, siteUrl } from "../site-data";
+import { TrackedLink } from "../components/tracked-link";
+import { consultingServices, pageMetadata, serviceSchema } from "../site-data";
 
 const serviceCopy: Record<string, string> = {
   "US Staffing":
@@ -29,12 +30,14 @@ export const metadata: Metadata = pageMetadata(
 );
 
 const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Auxil Consulting and Enterprise Solutions",
-  provider: { "@type": "Organization", name: "Auxil IT Solutions" },
-  url: `${siteUrl}/consulting`,
-  serviceType: consultingServices,
+  ...serviceSchema({
+    name: "AI consulting, product engineering, and recruitment services",
+    path: "/consulting",
+    description:
+      "Auxil supports AI consulting, product engineering, enterprise software, US staffing, RPO, and technical recruitment needs.",
+    serviceType: consultingServices,
+    areaServed: ["India", "United States"],
+  }),
 };
 
 export default function ConsultingPage() {
@@ -70,9 +73,14 @@ export default function ConsultingPage() {
           </div>
           <div className="page-cta">
             <h2>Need a dependable partner for a complex business requirement?</h2>
-            <a className="button button-primary" href="/contact">
+            <TrackedLink
+              className="button button-primary"
+              href="/contact"
+              eventName="service_cta_click"
+              eventPayload={{ page: "/consulting", service: "Consulting and Enterprise Solutions" }}
+            >
               Start a Conversation
-            </a>
+            </TrackedLink>
           </div>
         </div>
       </section>

@@ -2,8 +2,7 @@ import Image from "next/image";
 import { ContactForm } from "./components/contact-form";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
-
-const CONTACT_EMAIL = "hello@auxilitsolutions.com";
+import { TrackedLink } from "./components/tracked-link";
 
 const products = [
   {
@@ -78,30 +77,9 @@ const principles = [
   },
 ];
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Auxil IT Solutions",
-  url: "https://auxilitsolutions.com",
-  foundingDate: "2022-03",
-  email: CONTACT_EMAIL,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Hyderabad",
-    addressRegion: "Telangana",
-    addressCountry: "IN",
-  },
-  description:
-    "Auxil IT Solutions is an AI-first technology company building intelligent software across productivity, careers, and spirituality while providing selected technology consulting and talent solutions.",
-};
-
 export default function Home() {
   return (
     <main>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <SiteHeader />
 
       <section className="hero section" id="top">
@@ -127,12 +105,20 @@ export default function Home() {
               practice into focused AI products people can trust.
             </p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#products">
+              <TrackedLink
+                className="button button-primary"
+                href="#products"
+                eventPayload={{ page: "/", section: "hero" }}
+              >
                 Explore Products
-              </a>
-              <a className="button button-secondary" href="#solutions">
+              </TrackedLink>
+              <TrackedLink
+                className="button button-secondary"
+                href="#solutions"
+                eventPayload={{ page: "/", section: "hero" }}
+              >
                 Work With Auxil
-              </a>
+              </TrackedLink>
             </div>
           </div>
           <div className="hero-visual" aria-hidden="true">
@@ -242,9 +228,14 @@ export default function Home() {
               </article>
             ))}
           </div>
-          <a className="enterprise-link" href="/enterprise-services">
+          <TrackedLink
+            className="enterprise-link"
+            href="/enterprise-services"
+            eventName="service_cta_click"
+            eventPayload={{ page: "/", service: "Enterprise Services" }}
+          >
             Explore Enterprise Services
-          </a>
+          </TrackedLink>
         </div>
       </section>
 
@@ -298,7 +289,7 @@ export default function Home() {
             Connect with Auxil about our products, technology initiatives, US
             staffing, recruitment partnerships or workforce requirements.
           </p>
-          <ContactForm />
+          <ContactForm source={{ page: "/", service: "General enquiry" }} />
         </div>
       </section>
 

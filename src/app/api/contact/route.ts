@@ -22,6 +22,13 @@ type ContactPayload = {
   company?: unknown;
   message?: unknown;
   website?: unknown;
+  source?: unknown;
+};
+
+type ContactSource = {
+  page: string;
+  service: string;
+  location: string;
 };
 
 function getString(value: unknown) {
@@ -39,6 +46,28 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function sanitizeSourceValue(value: unknown) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.replace(/[^\w\s./#:-]/g, "").trim().slice(0, 120);
+}
+
+function getSource(value: unknown): ContactSource {
+  if (!value || typeof value !== "object") {
+    return { page: "", service: "", location: "" };
+  }
+
+  const source = value as Record<string, unknown>;
+
+  return {
+    page: sanitizeSourceValue(source.page),
+    service: sanitizeSourceValue(source.service),
+    location: sanitizeSourceValue(source.location),
+  };
 }
 
 function getIp(request: NextRequest) {
@@ -78,6 +107,7 @@ function validatePayload(payload: ContactPayload) {
   const company = getString(payload.company);
   const message = getString(payload.message);
   const website = getString(payload.website);
+  const source = getSource(payload.source);
 
   if (website) {
     return { ok: false as const };
@@ -105,7 +135,7 @@ function validatePayload(payload: ContactPayload) {
 
   return {
     ok: true as const,
-    data: { enquiryType, name, email, company, message },
+    data: { enquiryType, name, email, company, message, source },
   };
 }
 
@@ -139,13 +169,16 @@ export async function POST(request: NextRequest) {
 
   const submittedAt = new Date().toISOString();
   const userAgent = request.headers.get("user-agent") || "unknown";
-  const { enquiryType, name, email, company, message } = validation.data;
+  const { enquiryType, name, email, company, message, source } = validation.data;
   const rows = [
     ["Enquiry Type", enquiryType],
     ["Name", name],
     ["Email", email],
     ["Company", company || "Not provided"],
     ["Message", message],
+    ["Source Page", source.page || "Not provided"],
+    ["Source Service", source.service || "Not provided"],
+    ["Source Location", source.location || "Not provided"],
     ["Submitted timestamp", submittedAt],
     ["User IP", ip],
     ["User Agent", userAgent],

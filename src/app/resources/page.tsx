@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const resourceGroups = [
   {
@@ -37,22 +37,10 @@ export const metadata: Metadata = pageMetadata(
   "Explore Auxil resources including AI reports, recruitment reports, guides, whitepapers, and downloads.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Auxil Resources",
-  url: `${siteUrl}/resources`,
-  description: metadata.description,
-};
-
 export default function ResourcesPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Resources</p>

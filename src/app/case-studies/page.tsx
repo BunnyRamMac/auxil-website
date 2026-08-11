@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const caseStudyFramework = [
   "Problem context",
@@ -17,22 +17,10 @@ export const metadata: Metadata = pageMetadata(
   "Learn how Auxil will publish real case studies across recruitment delivery, AI product discovery, and career technology.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Auxil Case Studies",
-  url: `${siteUrl}/case-studies`,
-  description: metadata.description,
-};
-
 export default function CaseStudiesPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Case Studies</p>

@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { useRef, useState } from "react";
+import { trackEvent } from "./analytics";
 
 const initialFormState = {
   enquiryType: "",
@@ -14,6 +15,11 @@ const initialFormState = {
 
 type FormState = typeof initialFormState;
 type SubmitState = "idle" | "sending" | "success" | "error";
+type ContactSource = {
+  page?: string;
+  service?: string;
+  location?: string;
+};
 
 const enquiryTypes = [
   "Product partnership",
@@ -25,11 +31,24 @@ const enquiryTypes = [
   "Other",
 ];
 
-export function ContactForm() {
+export function ContactForm({
+  source = {},
+  submitLabel = "Start a Conversation",
+}: {
+  source?: ContactSource;
+  submitLabel?: string;
+}) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [hasTrackedStart, setHasTrackedStart] = useState(false);
   const statusRef = useRef<HTMLParagraphElement>(null);
+
+  const analyticsContext = {
+    page: source.page,
+    service: source.service,
+    location: source.location,
+  };
 
   const updateField =
     (field: keyof FormState) =>
@@ -39,6 +58,10 @@ export function ContactForm() {
         | React.ChangeEvent<HTMLSelectElement>
         | React.ChangeEvent<HTMLTextAreaElement>,
     ) => {
+      if (!hasTrackedStart && field !== "website") {
+        trackEvent("contact_form_start", analyticsContext);
+        setHasTrackedStart(true);
+      }
       setForm((current) => ({ ...current, [field]: event.target.value }));
     };
 
@@ -46,6 +69,7 @@ export function ContactForm() {
     event.preventDefault();
     setSubmitState("sending");
     setStatusMessage("");
+    trackEvent("contact_form_submit", analyticsContext);
 
     try {
       const response = await fetch("/api/contact", {
@@ -53,7 +77,7 @@ export function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, source }),
       });
 
       if (!response.ok) {
@@ -70,6 +94,7 @@ export function ContactForm() {
       setForm(initialFormState);
       setSubmitState("success");
       setStatusMessage("Thank you. We'll get back to you soon.");
+      trackEvent("contact_form_success", analyticsContext);
       statusRef.current?.focus();
     } catch (error) {
       setSubmitState("error");
@@ -78,6 +103,7 @@ export function ContactForm() {
           ? error.message
           : "Something went wrong. Please try again.",
       );
+      trackEvent("contact_form_error", analyticsContext);
       statusRef.current?.focus();
     }
   }
@@ -174,7 +200,7 @@ export function ContactForm() {
 
       <div className="hero-actions contact-actions">
         <button className="button button-primary" type="submit" disabled={isSending}>
-          {isSending ? "Sending..." : "Start a Conversation"}
+          {isSending ? "Sending..." : submitLabel}
         </button>
       </div>
 

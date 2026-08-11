@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const partnerTypes = [
   {
@@ -28,22 +28,10 @@ export const metadata: Metadata = pageMetadata(
   "Partner with Auxil across technology, recruitment, implementation, and global expansion initiatives.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Auxil Partners",
-  url: `${siteUrl}/partners`,
-  description: metadata.description,
-};
-
 export default function PartnersPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Partners</p>

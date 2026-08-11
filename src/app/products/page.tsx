@@ -1,35 +1,19 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, products, siteUrl } from "../site-data";
+import { TrackedLink } from "../components/tracked-link";
+import { pageMetadata, products } from "../site-data";
 
 export const metadata: Metadata = pageMetadata(
   "/products",
   "Products | Auxil IT Solutions",
-  "Explore Auxil products across spiritual technology, productivity, career intelligence, and AI-powered resume creation.",
+  "Explore Auxil products across spiritual technology, productivity, and career intelligence.",
 );
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Auxil Products",
-  url: `${siteUrl}/products`,
-  hasPart: products.map((product) => ({
-    "@type": "SoftwareApplication",
-    name: product.name,
-    applicationCategory: "BusinessApplication",
-    description: product.overview,
-  })),
-};
 
 export default function ProductsPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Products</p>
@@ -64,9 +48,14 @@ export default function ProductsPage() {
                   <h3>Target Audience</h3>
                   <p>{product.audience}</p>
                 </div>
-                <a className="button button-secondary" href="/contact">
+                <TrackedLink
+                  className="button button-secondary"
+                  href="/contact"
+                  eventName="product_cta_click"
+                  eventPayload={{ page: "/products", product: product.name }}
+                >
                   Learn More
-                </a>
+                </TrackedLink>
               </article>
             ))}
           </div>
@@ -76,9 +65,14 @@ export default function ProductsPage() {
       <section className="section cta-section">
         <div className="section-inner page-cta">
           <h2>Interested in early access or product partnerships?</h2>
-          <a className="button button-primary" href="/contact">
+          <TrackedLink
+            className="button button-primary"
+            href="/contact"
+            eventName="product_cta_click"
+            eventPayload={{ page: "/products", product: "Product partnerships" }}
+          >
             Talk to Auxil
-          </a>
+          </TrackedLink>
         </div>
       </section>
       <SiteFooter />

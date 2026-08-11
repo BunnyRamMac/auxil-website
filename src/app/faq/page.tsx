@@ -15,7 +15,7 @@ const faqs: FaqItem[] = [
     category: "Products",
     question: "Which product areas is Auxil building in?",
     answer:
-      "Auxil is building across productivity, career intelligence, resume creation, and spiritual technology.",
+      "Auxil is building across productivity, career intelligence, application support, and spiritual technology.",
   },
   {
     category: "Recruitment",

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 const culture = [
   "Work on useful AI products with practical customer context.",
@@ -31,22 +31,10 @@ export const metadata: Metadata = pageMetadata(
   "Explore careers at Auxil IT Solutions and join a team building AI products and enterprise technology capabilities.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CareersPage",
-  name: "Careers at Auxil IT Solutions",
-  url: `${siteUrl}/careers`,
-  description: metadata.description,
-};
-
 export default function CareersPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Careers</p>

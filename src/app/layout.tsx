@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Analytics } from "./components/analytics";
+import { organizationSchema, websiteSchema } from "./site-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://auxilitsolutions.com"),
@@ -60,7 +61,18 @@ export const metadata: Metadata = {
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? {
         google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+          ? {
+              "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+            }
+          : undefined,
       }
+    : process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? {
+          other: {
+            "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+          },
+        }
     : undefined,
 };
 
@@ -69,11 +81,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+
   return (
     <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col">
+        {gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
+        />
         {children}
         <Analytics
+          gtmId={gtmId}
           clarityId={process.env.NEXT_PUBLIC_CLARITY_ID}
           gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}
         />

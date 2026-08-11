@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { TrackedLink } from "../components/tracked-link";
+import { pageMetadata, serviceSchema } from "../site-data";
 
 const enterpriseSections = [
   {
@@ -47,19 +49,33 @@ const enterpriseSections = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "Enterprise Services | Auxil IT Solutions",
-  description:
-    "Specialised US staffing, recruitment, payroll and workforce services from Auxil IT Solutions.",
-  alternates: {
-    canonical: "/enterprise-services",
-  },
-};
+export const metadata: Metadata = pageMetadata(
+  "/enterprise-services",
+  "US Staffing, Recruitment & Workforce Services | Auxil IT Solutions",
+  "Explore Auxil services for US IT staffing, technical recruitment, RPO, payroll coordination, and workforce operations.",
+);
+
+const structuredData = serviceSchema({
+  name: "US staffing, recruitment, and workforce services",
+  path: "/enterprise-services",
+  description: metadata.description || "",
+  serviceType: [
+    "US IT staffing",
+    "Recruitment Process Outsourcing",
+    "Technical recruitment",
+    "Payroll and workforce management",
+  ],
+  areaServed: "United States",
+});
 
 export default function EnterpriseServicesPage() {
   return (
     <main className="enterprise-page">
       <SiteHeader />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <section className="enterprise-page-shell">
         <header className="enterprise-page-hero">
           <p className="eyebrow">Enterprise Services</p>
@@ -85,6 +101,14 @@ export default function EnterpriseServicesPage() {
             </section>
           ))}
         </div>
+        <TrackedLink
+          className="button button-primary"
+          href="/contact"
+          eventName="service_cta_click"
+          eventPayload={{ page: "/enterprise-services", service: "US staffing and recruitment" }}
+        >
+          Discuss Staffing Needs
+        </TrackedLink>
       </section>
       <SiteFooter />
     </main>

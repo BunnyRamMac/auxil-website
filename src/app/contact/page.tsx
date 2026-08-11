@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "../components/contact-form";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
-import { pageMetadata, siteUrl } from "../site-data";
+import { pageMetadata } from "../site-data";
 
 export const metadata: Metadata = pageMetadata(
   "/contact",
@@ -10,22 +10,10 @@ export const metadata: Metadata = pageMetadata(
   "Contact Auxil IT Solutions about AI products, technology initiatives, US staffing, recruitment, and workforce requirements.",
 );
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  name: "Contact Auxil IT Solutions",
-  url: `${siteUrl}/contact`,
-  description: metadata.description,
-};
-
 export default function ContactPage() {
   return (
     <main className="corporate-page">
       <SiteHeader />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
       <section className="section corporate-hero">
         <div className="section-inner">
           <p className="eyebrow">Contact</p>
@@ -39,7 +27,7 @@ export default function ContactPage() {
 
       <section className="section contact-section">
         <div className="section-inner contact-panel">
-          <ContactForm />
+          <ContactForm source={{ page: "/contact", service: "General enquiry" }} />
         </div>
       </section>
       <SiteFooter />

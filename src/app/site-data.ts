@@ -4,6 +4,7 @@ export const contactEmail = "hello@auxilitsolutions.com";
 export const primaryNav = [
   { label: "Products", href: "/products" },
   { label: "Solutions", href: "/consulting" },
+  { label: "Locations", href: "/locations" },
   { label: "Company", href: "/company" },
   { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
@@ -22,6 +23,7 @@ export const footerGroups = [
     title: "Solutions",
     links: [
       { label: "Consulting", href: "/consulting" },
+      { label: "Locations", href: "/locations" },
       { label: "Partners", href: "/partners" },
       { label: "Case Studies", href: "/case-studies" },
     ],
@@ -84,28 +86,15 @@ export const products = [
     id: "careersignal-global",
     name: "CareerSignal Global",
     overview:
-      "A career intelligence platform for discovering opportunities, improving applications, and managing the job-search process.",
+      "A career intelligence platform for discovering opportunities, improving applications and resumes, and managing the job-search process.",
     features: [
       "Opportunity discovery",
       "Eligibility and fit signals",
+      "Resume and application clarity",
       "Application workflow support",
       "Career progress intelligence",
     ],
     audience: "Job seekers, early-career professionals, and experienced candidates navigating global opportunities.",
-    status: "In Development",
-  },
-  {
-    id: "ai-resume-builder",
-    name: "AI Resume Builder",
-    overview:
-      "A focused product experience for creating clearer, stronger, and more role-aligned resumes with AI-assisted structure.",
-    features: [
-      "Resume structure guidance",
-      "Role-aligned content support",
-      "ATS-aware clarity",
-      "Career document refinement",
-    ],
-    audience: "Candidates who need professional resume support for competitive technology and business roles.",
     status: "In Development",
   },
 ];
@@ -120,6 +109,15 @@ export const consultingServices = [
   "Dedicated Teams",
   "Recruitment Technology",
 ];
+
+export type BreadcrumbItem = {
+  name: string;
+  path: string;
+};
+
+export function absoluteUrl(path: string) {
+  return `${siteUrl}${path}`;
+}
 
 export function pageMetadata(path: string, title: string, description: string) {
   const url = `${siteUrl}${path}`;
@@ -143,5 +141,75 @@ export function pageMetadata(path: string, title: string, description: string) {
       description,
       images: ["/og-image.png"],
     },
+  };
+}
+
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Auxil IT Solutions",
+    url: siteUrl,
+    foundingDate: "2022-03",
+    email: contactEmail,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Hyderabad",
+      addressRegion: "Telangana",
+      addressCountry: "IN",
+    },
+    description:
+      "Auxil IT Solutions is an AI-first technology company building intelligent software while supporting selected technology, staffing, and recruitment needs.",
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Auxil IT Solutions",
+    url: siteUrl,
+  };
+}
+
+export function breadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+export function serviceSchema({
+  name,
+  path,
+  description,
+  serviceType,
+  areaServed,
+}: {
+  name: string;
+  path: string;
+  description: string;
+  serviceType: string | string[];
+  areaServed?: string | string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    url: absoluteUrl(path),
+    description,
+    serviceType,
+    provider: {
+      "@type": "Organization",
+      name: "Auxil IT Solutions",
+      url: siteUrl,
+    },
+    ...(areaServed ? { areaServed } : {}),
   };
 }
