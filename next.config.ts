@@ -9,6 +9,19 @@ const nextConfig: NextConfig = {
         destination: "https://auxilitsolutions.com/:path*",
         permanent: true,
       },
+      // Phase 1 IA: merge legacy service pages into the new Services hubs.
+      // Note: Next.js 16 serves `permanent: true` as 308 (not 301); both are
+      // treated as permanent redirects by search engines.
+      {
+        source: "/consulting",
+        destination: "/services",
+        permanent: true,
+      },
+      {
+        source: "/enterprise-services",
+        destination: "/services/talent",
+        permanent: true,
+      },
     ];
   },
 };

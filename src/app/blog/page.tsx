@@ -10,11 +10,15 @@ const editorialTracks = [
   "Career Intelligence",
 ];
 
-export const metadata: Metadata = pageMetadata(
-  "/blog",
-  "Blog | Auxil IT Solutions",
-  "Read Auxil perspectives on AI products, recruitment operations, product engineering, and career intelligence.",
-);
+export const metadata: Metadata = {
+  ...pageMetadata(
+    "/blog",
+    "Blog | Auxil IT Solutions",
+    "Read Auxil perspectives on AI products, recruitment operations, product engineering, and career intelligence.",
+  ),
+  // Phase 1: kept as a route but excluded from indexing until substantive posts exist.
+  robots: { index: false, follow: true },
+};
 
 export default function BlogPage() {
   return (

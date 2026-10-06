@@ -1,31 +1,54 @@
 export const siteUrl = "https://auxilitsolutions.com";
 export const contactEmail = "hello@auxilitsolutions.com";
 
-export const primaryNav = [
+export type NavChild = { label: string; href: string };
+export type NavItem = { label: string; href: string; children?: NavChild[] };
+
+export const primaryNav: NavItem[] = [
   { label: "Products", href: "/products" },
-  { label: "Solutions", href: "/consulting" },
-  { label: "Locations", href: "/locations" },
+  {
+    label: "Technology",
+    href: "/services/technology",
+    children: [
+      { label: "AI & Automation", href: "/services/technology#ai-automation" },
+      {
+        label: "Software & Product Engineering",
+        href: "/services/technology#software-engineering",
+      },
+      {
+        label: "Digital / Enterprise Transformation",
+        href: "/services/technology#enterprise-transformation",
+      },
+    ],
+  },
+  {
+    label: "Talent",
+    href: "/services/talent",
+    children: [
+      {
+        label: "Recruitment & Talent Acquisition",
+        href: "/services/talent#recruitment",
+      },
+      { label: "RPO & GCC Hiring", href: "/services/talent#rpo-gcc" },
+      {
+        label: "Contract Staffing & Payroll",
+        href: "/services/talent#contract-payroll",
+      },
+      { label: "Executive Search", href: "/services/talent#executive-search" },
+      { label: "US Staffing", href: "/services/talent#us-staffing" },
+    ],
+  },
   { label: "Company", href: "/company" },
-  { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const footerGroups = [
   {
-    title: "Products",
+    title: "Services",
     links: [
-      { label: "Products", href: "/products" },
-      { label: "Technology", href: "/#technology" },
-      { label: "Enterprise Services", href: "/enterprise-services" },
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      { label: "Consulting", href: "/consulting" },
-      { label: "Locations", href: "/locations" },
-      { label: "Partners", href: "/partners" },
-      { label: "Case Studies", href: "/case-studies" },
+      { label: "All Services", href: "/services" },
+      { label: "Technology Solutions", href: "/services/technology" },
+      { label: "Talent Solutions", href: "/services/talent" },
     ],
   },
   {
@@ -33,21 +56,22 @@ export const footerGroups = [
     links: [
       { label: "About", href: "/company" },
       { label: "Careers", href: "/careers" },
+      { label: "Locations", href: "/locations" },
+      { label: "Partners", href: "/partners" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Resources",
-    links: [
-      { label: "Blog", href: "/blog" },
-      { label: "Resources", href: "/resources" },
-      { label: "FAQ", href: "/faq" },
-    ],
+    title: "Products",
+    links: [{ label: "Products", href: "/products" }],
   },
   {
     title: "Legal",
-    links: [{ label: "Privacy", href: "/privacy" }],
+    links: [
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+    ],
   },
 ];
 
@@ -97,17 +121,6 @@ export const products = [
     audience: "Job seekers, early-career professionals, and experienced candidates navigating global opportunities.",
     status: "In Development",
   },
-];
-
-export const consultingServices = [
-  "US Staffing",
-  "Recruitment Process Outsourcing",
-  "Executive Search",
-  "AI Consulting",
-  "Product Engineering",
-  "Enterprise Software",
-  "Dedicated Teams",
-  "Recruitment Technology",
 ];
 
 export type BreadcrumbItem = {

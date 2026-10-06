@@ -132,7 +132,7 @@ export default function HyderabadLocationPage() {
               </p>
               <TrackedLink
                 className="text-link"
-                href="/consulting"
+                href="/services"
                 eventName="service_cta_click"
                 eventPayload={{ page: "/locations/hyderabad", location: "Hyderabad" }}
               >

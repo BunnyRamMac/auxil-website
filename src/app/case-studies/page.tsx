@@ -11,11 +11,15 @@ const caseStudyFramework = [
   "Measured results",
 ];
 
-export const metadata: Metadata = pageMetadata(
-  "/case-studies",
-  "Case Studies | Auxil IT Solutions",
-  "Learn how Auxil will publish real case studies across recruitment delivery, AI product discovery, and career technology.",
-);
+export const metadata: Metadata = {
+  ...pageMetadata(
+    "/case-studies",
+    "Case Studies | Auxil IT Solutions",
+    "Learn how Auxil will publish real case studies across recruitment delivery, AI product discovery, and career technology.",
+  ),
+  // Phase 1: kept as a route but excluded from indexing until real studies can be published.
+  robots: { index: false, follow: true },
+};
 
 export default function CaseStudiesPage() {
   return (

@@ -31,11 +31,15 @@ const resourceGroups = [
   },
 ];
 
-export const metadata: Metadata = pageMetadata(
-  "/resources",
-  "Resources | Auxil IT Solutions",
-  "Explore Auxil resources including AI reports, recruitment reports, guides, whitepapers, and downloads.",
-);
+export const metadata: Metadata = {
+  ...pageMetadata(
+    "/resources",
+    "Resources | Auxil IT Solutions",
+    "Explore Auxil resources including AI reports, recruitment reports, guides, whitepapers, and downloads.",
+  ),
+  // Phase 1: kept as a route but excluded from indexing until real assets exist.
+  robots: { index: false, follow: true },
+};
 
 export default function ResourcesPage() {
   return (
