@@ -1,16 +1,15 @@
 "use client";
 
-import { useIsCoarseOrSmall, usePrefersReducedMotion } from "./use-motion-prefs";
+import { usePrefersReducedMotion } from "./use-motion-prefs";
 
 /**
- * Full-bleed cinematic hero: the deep-AI brand film plays behind the
- * headline. Static poster on small screens and when reduced motion is
+ * Full-bleed cinematic hero: the brand film plays behind the headline,
+ * on desktop and mobile alike. Static poster only when reduced motion is
  * preferred; the video is muted, loops, and never autoplays with sound.
  */
 export function HeroVideo() {
   const reduced = usePrefersReducedMotion();
-  const small = useIsCoarseOrSmall();
-  const staticMode = reduced || small;
+  const staticMode = reduced;
 
   return (
     <div className="hero-video-bg" aria-hidden="true">

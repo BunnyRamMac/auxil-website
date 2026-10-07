@@ -69,8 +69,8 @@ export function SiteHeader() {
           <Image
             src="/logo/auxil-logo.png"
             alt="Auxil IT Solutions"
-            width={1536}
-            height={1024}
+            width={1297}
+            height={432}
             sizes="96px"
             priority
           />
