@@ -38,10 +38,10 @@ export default function LocationsPage() {
         <div className="section-inner">
           <div className="content-grid two">
             <article className="content-card">
-              <p className="card-kicker">Headquarters</p>
+              <p className="card-kicker">Founded in</p>
               <h2>Hyderabad, India</h2>
               <p>
-                Auxil is headquartered in Hyderabad, where its product direction
+                Auxil was founded in Hyderabad in 2022, where its product direction
                 and delivery experience connect AI product development,
                 recruitment operations, and technology services.
               </p>

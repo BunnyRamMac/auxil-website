@@ -51,7 +51,7 @@ const faqs: FaqItem[] = [
     category: "Support",
     question: "Where is Auxil based?",
     answer:
-      "Auxil IT Solutions is headquartered in Hyderabad, India, with ambitions to support global product and enterprise needs.",
+      "Auxil IT Solutions was founded in Hyderabad, India in 2022, with ambitions to support global product and enterprise needs.",
   },
 ];
 

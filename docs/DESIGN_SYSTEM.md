@@ -420,7 +420,7 @@ Footer must feel like a premium close, not an afterthought.
 - Dark background.
 - Small brand mark.
 - Company summary.
-- Founded and headquartered details.
+- Founded details.
 - Clear nav links.
 - Privacy link.
 - No fake social links.

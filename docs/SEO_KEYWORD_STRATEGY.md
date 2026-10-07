@@ -43,7 +43,7 @@ This strategy maps real Auxil offerings to search intent without invented volume
 
 | Location | Decision | Reason |
 |---|---|---|
-| Hyderabad | Publish `/locations/hyderabad` | Auxil is headquartered in Hyderabad. The page can describe real operating context, relevant services, product work, internal links, FAQ, CTA, and valid Service/Breadcrumb/FAQ schema. |
+| Hyderabad | Publish `/locations/hyderabad` | Auxil was founded in Hyderabad. The page can describe real operating context, relevant services, product work, internal links, FAQ, CTA, and valid Service/Breadcrumb/FAQ schema. |
 | India | Do not publish a dedicated page yet | India is already reflected through headquarters/company context. A standalone India page would risk duplicating company and consulting content unless Auxil has unique India-specific services, offices, case studies, or hiring information to publish. |
 | United States | Do not publish a dedicated page yet | United States relevance exists through US staffing and recruitment services, which are better owned by `/enterprise-services`. A US location page would be thin without a verified US office, address, team, or unique market content. |
 | Other cities | Do not evaluate further now | No current evidence of real local operations, unique service content, or business relevance that would justify city pages. |

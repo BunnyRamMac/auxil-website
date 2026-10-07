@@ -16,8 +16,7 @@ export function SiteFooter() {
             />
           </Link>
           <p>Building intelligent products for real life.</p>
-          <p>Founded in March 2022</p>
-          <p>Headquartered in Hyderabad, India</p>
+          <p>Founded in Hyderabad, March 2022</p>
         </div>
 
         <div className="footer-directory" aria-label="Footer navigation">

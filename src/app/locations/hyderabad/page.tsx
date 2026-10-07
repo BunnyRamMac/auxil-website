@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Why does Auxil publish a Hyderabad location page?",
     answer:
-      "Auxil is headquartered in Hyderabad, so this page reflects the company's real operating context rather than a generic city landing page.",
+      "Auxil was founded in Hyderabad in 2022, so this page reflects the company's real operating context rather than a generic city landing page.",
   },
   {
     question: "Which services are relevant from Hyderabad?",
@@ -72,7 +72,7 @@ export default function HyderabadLocationPage() {
           <p className="eyebrow">Hyderabad</p>
           <h1>AI product development and recruitment services in Hyderabad.</h1>
           <p>
-            Auxil is headquartered in Hyderabad, where product thinking,
+            Auxil was founded in Hyderabad, where product thinking,
             engineering execution, and recruitment delivery experience inform
             the company&apos;s AI-first direction.
           </p>

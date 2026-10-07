@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { ContactForm } from "./components/contact-form";
 import { SiteFooter } from "./components/site-footer";
 import { SiteHeader } from "./components/site-header";
 import { TrackedLink } from "./components/tracked-link";
 import { EvolutionTimeline } from "./components/motion/evolution-timeline";
 import { FlowSvg } from "./components/motion/flow-svg";
-import { HeroSystem } from "./components/motion/hero-system";
+import { HeroVideo } from "./components/motion/hero-video";
 import { Reveal } from "./components/motion/reveal";
 import { products } from "./site-data";
 
@@ -91,9 +92,10 @@ export default function Home() {
     <main>
       <SiteHeader />
 
-      {/* 1 — Hero */}
-      <section className="hero section" id="top">
-        <div className="section-inner hero-grid">
+      {/* 1 — Hero: full-bleed cinematic brand film */}
+      <section className="hero hero-cinematic section" id="top">
+        <HeroVideo />
+        <div className="section-inner hero-centered">
           <div className="hero-copy">
             <p className="eyebrow">Technology & talent solutions</p>
             <h1>Build smarter technology. Automate work. Hire the people to scale it.</h1>
@@ -118,8 +120,66 @@ export default function Home() {
               </TrackedLink>
             </div>
           </div>
-          <div className="hero-visual">
-            <HeroSystem />
+        </div>
+        <span className="scroll-cue" aria-hidden="true">
+          Scroll
+        </span>
+      </section>
+
+      {/* 1b — Why collaborate with Auxil */}
+      <section className="section why-collaborate" id="why-collaborate">
+        <div className="section-inner">
+          <Reveal>
+            <div className="section-heading split-heading">
+              <div>
+                <p className="eyebrow">Why Auxil</p>
+                <h2>Two engines. One outcome.</h2>
+              </div>
+              <p>
+                Technology that builds. Talent that scales. One partner for
+                both.
+              </p>
+            </div>
+          </Reveal>
+          <div className="why-collaborate-grid">
+            <Reveal>
+              <div className="why-collaborate-visual">
+                <Image
+                  src="/images/why-auxil-visual.webp"
+                  alt="Two luminous systems — technology and talent — intertwining into one outcome"
+                  width={1280}
+                  height={720}
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                />
+              </div>
+            </Reveal>
+            <div className="why-collaborate-blocks">
+              {[
+                {
+                  title: "What we do",
+                  body: "Auxil runs on two connected engines. Technology — AI & automation, software and product engineering, enterprise and digital transformation. Talent — recruitment, RPO, GCC hiring, contract and US staffing, executive search. We build the system, and we staff the team that runs it.",
+                },
+                {
+                  title: "Why collaborate with us",
+                  body: "Building and scaling shouldn't mean juggling vendors. Our service experience helps us understand the recurring problems businesses face; our product thinking helps us design more scalable solutions. One partner — from first build to the team that operates it.",
+                },
+                {
+                  title: "What makes us different",
+                  body: "Most firms sell you technology or people. Our engines are designed to work as one. And we're builders ourselves: our own product IP — PoojaPath (private testing), 2DO AI and CareerSignal Global (in development) — keeps us honest about what shipping real software takes.",
+                },
+                {
+                  title: "What our clients get",
+                  body: "Outcomes, not activity: smarter technology, automated work, and the people to scale it. Founded in Hyderabad in 2022 and AI-first in direction — built for businesses that want to build, transform, and grow.",
+                },
+              ].map((block, i) => (
+                <Reveal key={block.title} delay={i * 100}>
+                  <div className="why-collaborate-block">
+                    <h3>{block.title}</h3>
+                    <p>{block.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </section>
