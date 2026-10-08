@@ -45,19 +45,19 @@ export default function CaseStudiesPage() {
             </div>
             <div className="case-study-grid">
               <section>
-                <h3>Problem</h3>
+                <h3 className="card-label">Problem</h3>
                 <p>Each future story will begin with the actual business or product problem.</p>
               </section>
               <section>
-                <h3>Solution</h3>
+                <h3 className="card-label">Solution</h3>
                 <p>The approach will explain the design, engineering, or delivery model used.</p>
               </section>
               <section>
-                <h3>Results</h3>
+                <h3 className="card-label">Results</h3>
                 <p>Outcomes will be shared only when they are factual and approved for publication.</p>
               </section>
               <section>
-                <h3>Technologies</h3>
+                <h3 className="card-label">Technologies</h3>
                 <ul className="dash-list">
                   {caseStudyFramework.map((item) => (
                     <li key={item}>{item}</li>

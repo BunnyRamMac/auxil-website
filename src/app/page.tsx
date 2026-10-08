@@ -50,20 +50,26 @@ const talentItems = [
   { title: "US Staffing", href: "/services/talent#us-staffing" },
 ];
 
-const productNarrative: Record<string, { problem: string; nextStep: string }> = {
+const productNarrative: Record<string, { problem: string; thesis: string; nextStep: string }> = {
   PoojaPath: {
     problem:
       "Daily spiritual routines — pooja, Panchang, Japa, festivals — are hard to keep together when guidance is scattered.",
+    thesis:
+      "Daily spiritual practice deserves technology built with the same care the practice itself demands.",
     nextStep: "In private testing — request early access.",
   },
   "2DO AI": {
     problem:
       "Tasks, priorities, schedules and follow-ups scatter across tools, and busy professionals lose the thread.",
+    thesis:
+      "Productivity breaks down at follow-through — AI should close that gap, not add another list to manage.",
     nextStep: "In development — get notified at early access.",
   },
   "CareerSignal Global": {
     problem:
       "Discovering the right opportunities and presenting your fit clearly is harder than it should be.",
+    thesis:
+      "Job seekers make better moves when they can see clear signals about fit and readiness.",
     nextStep: "In development — get notified at early access.",
   },
 };
@@ -276,18 +282,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5 — Products (secondary engine) */}
+      {/* 5 — Auxil Labs */}
       <section className="section products-section" id="products">
         <div className="section-inner">
           <Reveal>
             <div className="section-heading split-heading">
               <div>
-                <p className="eyebrow">Emerging products</p>
+                <p className="eyebrow">Auxil Labs</p>
                 <h2>What we&apos;re building.</h2>
               </div>
               <p>
                 Products are Auxil&apos;s second engine: focused AI systems growing
-                out of the problems we see in real delivery work.
+                out of the problems we see in real delivery work. Each lab
+                project starts from a real problem and a clear thesis — nothing
+                here is presented as launched.
               </p>
             </div>
           </Reveal>
@@ -308,6 +316,10 @@ export default function Home() {
                           <dd>{narrative?.problem}</dd>
                         </div>
                         <div>
+                          <dt>Thesis</dt>
+                          <dd>{narrative?.thesis}</dd>
+                        </div>
+                        <div>
                           <dt>Concept</dt>
                           <dd>{product.overview}</dd>
                         </div>
@@ -322,7 +334,7 @@ export default function Home() {
                       </dl>
                       <TrackedLink
                         className="text-link"
-                        href="/contact"
+                        href={`/products#${product.id}`}
                         eventName="product_cta_click"
                         eventPayload={{ page: "/", product: product.name }}
                       >
@@ -389,8 +401,13 @@ export default function Home() {
         <div className="section-inner">
           <Reveal>
             <div className="section-heading">
-              <p className="eyebrow">How we work</p>
-              <h2>Clear engagement, from first call to operation.</h2>
+              <p className="eyebrow">How Auxil works</p>
+              <h2>Two engines. One operating system.</h2>
+              <p>
+                Technology and talent run as parallel delivery flows — the same
+                discipline, the same accountability, whether we are building
+                software or building your team.
+              </p>
             </div>
           </Reveal>
           <div className="content-grid two">
@@ -398,31 +415,64 @@ export default function Home() {
               <article className="content-card">
                 <p className="card-kicker">Technology</p>
                 <FlowSvg
-                  label="Technology engagement flow: Discover, Design, Build, Integrate, Operate."
+                  label="Technology delivery flow: Discover, Design, Build, Automate, Integrate, Measure."
                   steps={[
                     { label: "Discover" },
                     { label: "Design" },
                     { label: "Build" },
+                    { label: "Automate" },
                     { label: "Integrate" },
-                    { label: "Operate" },
+                    { label: "Measure" },
                   ]}
                 />
+                <ol className="flow-detail-list">
+                  <li><strong>Discover</strong> — understand the problem, the users, and what success looks like.</li>
+                  <li><strong>Design</strong> — define the solution, the architecture, and the plan.</li>
+                  <li><strong>Build</strong> — engineer it in small, reviewable increments.</li>
+                  <li><strong>Automate</strong> — apply AI and automation where they create genuine value.</li>
+                  <li><strong>Integrate</strong> — connect with your existing systems, data, and teams.</li>
+                  <li><strong>Measure</strong> — track outcomes and keep improving.</li>
+                </ol>
+                <TrackedLink
+                  className="text-link"
+                  href="/services/technology"
+                  eventName="service_cta_click"
+                  eventPayload={{ page: "/", service: "Technology flow" }}
+                >
+                  Explore technology services
+                </TrackedLink>
               </article>
             </Reveal>
             <Reveal delay={140}>
               <article className="content-card">
                 <p className="card-kicker">Talent</p>
                 <FlowSvg
-                  label="Talent engagement flow: Need, Map, Source, Assess, Hire, Support."
+                  label="Talent delivery flow: Understand, Map, Source, Assess, Hire, Improve."
                   steps={[
-                    { label: "Need" },
+                    { label: "Understand" },
                     { label: "Map" },
                     { label: "Source" },
                     { label: "Assess" },
                     { label: "Hire" },
-                    { label: "Support" },
+                    { label: "Improve" },
                   ]}
                 />
+                <ol className="flow-detail-list">
+                  <li><strong>Understand</strong> — learn the role, the team, and what good looks like.</li>
+                  <li><strong>Map</strong> — map the market for the skills you need.</li>
+                  <li><strong>Source</strong> — reach and engage the right candidates.</li>
+                  <li><strong>Assess</strong> — evaluate capability and fit rigorously.</li>
+                  <li><strong>Hire</strong> — support selection, offer, and onboarding.</li>
+                  <li><strong>Improve</strong> — review hiring outcomes and refine the pipeline.</li>
+                </ol>
+                <TrackedLink
+                  className="text-link"
+                  href="/services/talent"
+                  eventName="service_cta_click"
+                  eventPayload={{ page: "/", service: "Talent flow" }}
+                >
+                  Explore talent solutions
+                </TrackedLink>
               </article>
             </Reveal>
           </div>

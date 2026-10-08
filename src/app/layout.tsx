@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "./components/analytics";
+import { Chatbot } from "./components/chatbot/chatbot";
 import { organizationSchema, websiteSchema } from "./site-data";
+
+const displayFont = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://auxilitsolutions.com"),
@@ -84,7 +93,7 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID?.trim();
 
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className={`h-full antialiased ${displayFont.variable}`}>
       <body className="min-h-full flex flex-col">
         {gtmId && (
           <noscript>
@@ -106,6 +115,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema()) }}
         />
         {children}
+        <Chatbot />
         <Analytics
           gtmId={gtmId}
           clarityId={process.env.NEXT_PUBLIC_CLARITY_ID}

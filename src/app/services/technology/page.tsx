@@ -37,6 +37,29 @@ const sections: {
   offerings: string[];
 }[] = [
   {
+    id: "agentic-ai",
+    kicker: "Agentic AI",
+    title: "AI agents that do real work — with humans at the decision points.",
+    steps: [
+      { label: "Discover" },
+      { label: "Reason" },
+      { label: "Act" },
+      { label: "Validate" },
+      { label: "Human handoff" },
+    ],
+    layout: "horizontal",
+    body: "Auxil designs AI agent systems that operate inside your real workflows — gathering information, drafting outputs, and moving routine work forward — while people stay at every consequential decision. We start from the work your team already does, connect agents to your existing tools and data, and keep every agent action observable, reviewable, and reversible.",
+    offerings: [
+      "Recruiting workflow agents",
+      "Internal knowledge assistants",
+      "Document-processing agents",
+      "Research agents",
+      "Customer-support agents",
+      "Approval and workflow orchestration",
+      "Human-in-the-loop automation",
+    ],
+  },
+  {
     id: "ai-automation",
     kicker: "AI & Automation",
     title: "Apply AI where it creates genuine value.",
@@ -140,6 +163,16 @@ export default function TechnologyServicesPage() {
               >
                 Discuss your technology needs
               </TrackedLink>
+              {section.id === "ai-automation" && (
+                <TrackedLink
+                  className="button button-secondary"
+                  href="/ai-opportunity-assessment"
+                  eventName="service_cta_click"
+                  eventPayload={{ page: "/services/technology", service: "AI opportunity assessment" }}
+                >
+                  Try the AI opportunity assessment
+                </TrackedLink>
+              )}
             </div>
           </div>
         </section>

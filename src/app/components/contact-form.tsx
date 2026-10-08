@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "./analytics";
 
 const initialFormState = {
@@ -43,6 +43,25 @@ export function ContactForm({
   const [statusMessage, setStatusMessage] = useState("");
   const [hasTrackedStart, setHasTrackedStart] = useState(false);
   const statusRef = useRef<HTMLParagraphElement>(null);
+  const hasPrefilledRef = useRef(false);
+
+  // Prefill from ?enquiryType= and ?message= (used by the AI opportunity assessment).
+  useEffect(() => {
+    if (hasPrefilledRef.current) {
+      return;
+    }
+    hasPrefilledRef.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    const prefillType = params.get("enquiryType") ?? "";
+    const prefillMessage = params.get("message") ?? "";
+
+    setForm((current) => ({
+      ...current,
+      enquiryType: enquiryTypes.includes(prefillType) ? prefillType : current.enquiryType,
+      message: prefillMessage ? prefillMessage.slice(0, 3000) : current.message,
+    }));
+  }, []);
 
   const analyticsContext = {
     page: source.page,

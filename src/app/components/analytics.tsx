@@ -18,7 +18,16 @@ export type AnalyticsEventName =
   | "contact_form_start"
   | "contact_form_submit"
   | "contact_form_success"
-  | "contact_form_error";
+  | "contact_form_error"
+  | "intake_start"
+  | "intake_submit"
+  | "intake_success"
+  | "intake_error"
+  | "waitlist_submit"
+  | "waitlist_success"
+  | "waitlist_error"
+  | "assessment_start"
+  | "assessment_complete";
 
 type DataLayerEvent = {
   event?: AnalyticsEventName | "page_view" | "gtm.js";

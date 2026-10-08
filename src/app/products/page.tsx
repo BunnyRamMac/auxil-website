@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { ProductWaitlist } from "../components/product-waitlist";
 import { TrackedLink } from "../components/tracked-link";
 import { pageMetadata, products } from "../site-data";
 
@@ -37,7 +38,7 @@ export default function ProductsPage() {
                 <h2>{product.name}</h2>
                 <p>{product.overview}</p>
                 <div>
-                  <h3>Key Features</h3>
+                  <h3 className="card-label">Key Features</h3>
                   <ul className="dash-list">
                     {product.features.map((feature) => (
                       <li key={feature}>{feature}</li>
@@ -45,7 +46,7 @@ export default function ProductsPage() {
                   </ul>
                 </div>
                 <div>
-                  <h3>Target Audience</h3>
+                  <h3 className="card-label">Target Audience</h3>
                   <p>{product.audience}</p>
                 </div>
                 <TrackedLink
@@ -56,6 +57,12 @@ export default function ProductsPage() {
                 >
                   Learn More
                 </TrackedLink>
+                <div className="product-waitlist">
+                  <ProductWaitlist
+                    productName={product.name}
+                    productId={product.id}
+                  />
+                </div>
               </article>
             ))}
           </div>

@@ -18,7 +18,7 @@ type FlowSvgProps = {
 };
 
 const NODE_R = 22;
-const BLUE = "#2257ff";
+const GOLD = "#e5a93a";
 
 /**
  * Animated process-flow diagram. Steps highlight in sequence; connectors carry
@@ -62,7 +62,7 @@ export function FlowSvg({ steps, layout = "horizontal", label, className = "" }:
                     x2={cx}
                     y2={y + gap - NODE_R}
                     className="flow-dash"
-                    stroke={BLUE}
+                    stroke={GOLD}
                     strokeWidth="2"
                   />
                 )}
@@ -104,8 +104,8 @@ export function FlowSvg({ steps, layout = "horizontal", label, className = "" }:
           aria-label={label}
           className={animated ? "is-animated" : ""}
         >
-          <path d={ellipsePath} fill="none" stroke={BLUE} strokeWidth="2" opacity="0.35" />
-          <path d={ellipsePath} fill="none" stroke={BLUE} strokeWidth="2" className="flow-dash" />
+          <path d={ellipsePath} fill="none" stroke={GOLD} strokeWidth="2" opacity="0.35" />
+          <path d={ellipsePath} fill="none" stroke={GOLD} strokeWidth="2" className="flow-dash" />
           {steps.map((step, i) => {
             const a = (i / steps.length) * Math.PI * 2 - Math.PI / 2;
             const x = cx + rx * Math.cos(a);
@@ -134,7 +134,7 @@ export function FlowSvg({ steps, layout = "horizontal", label, className = "" }:
             );
           })}
           {animated && (
-            <circle r="5" fill={BLUE} className="flow-traveler">
+            <circle r="5" fill={GOLD} className="flow-traveler">
               <animateMotion dur="9s" repeatCount="indefinite" path={ellipsePath} />
             </circle>
           )}
@@ -169,7 +169,7 @@ export function FlowSvg({ steps, layout = "horizontal", label, className = "" }:
                   x2={x + gap - NODE_R - 6}
                   y2={y}
                   className="flow-dash"
-                  stroke={BLUE}
+                  stroke={GOLD}
                   strokeWidth="2"
                 />
               )}
@@ -181,7 +181,7 @@ export function FlowSvg({ steps, layout = "horizontal", label, className = "" }:
                     const above = si === 0;
                     return (
                       <g key={s}>
-                        <line x1={x} y1={y} x2={bx} y2={by} stroke={BLUE} strokeWidth="1.5" opacity="0.5" />
+                        <line x1={x} y1={y} x2={bx} y2={by} stroke={GOLD} strokeWidth="1.5" opacity="0.5" />
                         <circle cx={bx} cy={by} r={9} className="flow-node flow-node-sm" />
                         <text
                           x={bx}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { ContactForm } from "../components/contact-form";
 import { SiteFooter } from "../components/site-footer";
 import { SiteHeader } from "../components/site-header";
+import { SmartIntake } from "../components/smart-intake";
 import { pageMetadata } from "../site-data";
 
 export const metadata: Metadata = pageMetadata(
@@ -27,7 +27,7 @@ export default function ContactPage() {
 
       <section className="section contact-section">
         <div className="section-inner contact-panel">
-          <ContactForm source={{ page: "/contact", service: "General enquiry" }} />
+          <SmartIntake />
         </div>
       </section>
       <SiteFooter />
